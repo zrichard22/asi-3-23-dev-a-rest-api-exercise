@@ -18,8 +18,8 @@ class PageModel extends BaseModel {
     return page ? page.id : null
   }
 
-  static getAllPages = async (isLogged = false) => {
-    const pages = this.query()
+  static getAllPages = async (isLogged = false, { limit, offset }) => {
+    const pages = this.query().limit(limit).offset(offset)
     isLogged ? pages : pages.whereNotNull("publishedAt")
 
     return await pages

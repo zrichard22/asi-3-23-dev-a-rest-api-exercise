@@ -1,15 +1,16 @@
 import BaseModel from "./BaseModel.js"
 import hashPassword from "../../passwordSecurity.js"
+import config from "../../config.js"
 
 class UserModel extends BaseModel {
   static tableName = "users"
 
   static relationMappings = {
     roles: {
-      relation: BaseModel.ManyToManyRelation,
+      relation: BaseModel.BelongsToOneRelation,
       modelClass: "RoleModel",
       join: {
-        from: "users.id",
+        from: "users.idRole",
         to: "roles.id",
       },
     },
@@ -23,8 +24,11 @@ class UserModel extends BaseModel {
     return result.length > 0
   }
 
-  static getAllUsers = async () => {
-    return await UserModel.query().whereNull("deletedAt")
+  static getAllUsers = async ({
+    limit,
+    offset
+  }) => {
+    return await UserModel.query().whereNull("deletedAt").limit(limit).offset(offset)
   }
 
   static getUser = async (idUser) => {
