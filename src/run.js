@@ -26,7 +26,7 @@ const run = async (config) => {
   app.use(handleError)
 
   app.use("*", (req, res) => {
-    res.status(404).json({ message: "Not found" })
+    res.status(404).send({ error: ["Not found"], errorCode: "not_found" })
   })
 }
 
