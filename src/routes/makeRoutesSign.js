@@ -37,9 +37,7 @@ const makeRoutesSign = ({ app, db }) => {
     }),
     mw(async (req, res) => {
       const { email, password } = req.data.body
-      const [user] = await db("users")
-        .where({ email })
-        .whereNull("deletedAt")
+      const [user] = await db("users").where({ email }).whereNull("deletedAt")
 
       if (!user) {
         throw new InvalidCredentialsError()

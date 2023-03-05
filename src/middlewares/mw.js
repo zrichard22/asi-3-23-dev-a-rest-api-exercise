@@ -7,8 +7,3 @@ const mw = (handle) => async (req, res, next) => {
 }
 
 export default mw
-
-
-
-
-

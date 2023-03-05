@@ -28,13 +28,13 @@ const makeRoutesUsers = ({ app }) => {
         throw new InvalidCredentialsError()
       }
 
-      const limit = req.data.query.limit 
+      const limit = req.data.query.limit
       const offset = req.data.query.offset
 
       if (req.session.rights.ownerOnly) {
         res.send(sanitizeUser(await UserModel.getUser(req.session.user.id))[0])
       } else {
-        res.send(sanitizeUser(await UserModel.getAllUsers({ limit, offset})))
+        res.send(sanitizeUser(await UserModel.getAllUsers({ limit, offset })))
       }
     })
   )

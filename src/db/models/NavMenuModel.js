@@ -26,31 +26,31 @@ class NavMenuModel extends BaseModel {
   }
 
   static getMenu = async (id) => {
-  const data = await this.query()
-    .findById(id)
-    .withGraphFetched("navMenuPages.[page]")
-    .modifyGraph("navMenuPages", (builder) => {
-      builder.select("")
-    })
-    .withGraphFetched("navMenus")
-    .modifyGraph("navMenus", (builder) => {
-      builder.select("id")
-    })
+    const data = await this.query()
+      .findById(id)
+      .withGraphFetched("navMenuPages.[page]")
+      .modifyGraph("navMenuPages", (builder) => {
+        builder.select("")
+      })
+      .withGraphFetched("navMenus")
+      .modifyGraph("navMenus", (builder) => {
+        builder.select("id")
+      })
 
-  let children = []
-  data.navMenus = data.navMenus.map((item) => item.id)
+    let children = []
+    data.navMenus = data.navMenus.map((item) => item.id)
 
-  if (data.navMenus.length > 0) {
-    for (const item of data.navMenus) {
-      const child = await this.getMenu(item)
-      children.push(child)
+    if (data.navMenus.length > 0) {
+      for (const item of data.navMenus) {
+        const child = await this.getMenu(item)
+        children.push(child)
+      }
     }
+
+    data.children = children
+
+    return data
   }
-
-  data.children = children
-
-  return data
-}
 
   static getMenus = async () => {
     return await this.query()
@@ -67,7 +67,7 @@ class NavMenuModel extends BaseModel {
   static deleteMenu = async (id) => {
     await NavMenuPageModel.deleteMenu(id)
     await this.query().patch({ idParent: null }).where("idParent", id)
-    
+
     return await this.query().deleteById(id).returning("*").first()
   }
 

@@ -16,12 +16,10 @@ export const sanitizeUser = extract([
 ])
 
 export const sanitizePage = extract([
-    "id",
-    "title",
-    "content",
-    "slugURL",
-    "idCreator",
-    "publishedAt",
-    ])
-
-
+  "id",
+  "title",
+  "content",
+  "slugURL",
+  "idCreator",
+  "publishedAt",
+])

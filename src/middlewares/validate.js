@@ -5,7 +5,6 @@ const validate = (validators) =>
   mw(async (req, res, next) => {
     const { body, params, query } = validators
 
-
     try {
       ;[body, params, query].forEach((key) => {
         if (validators[key] && !req[key]) {

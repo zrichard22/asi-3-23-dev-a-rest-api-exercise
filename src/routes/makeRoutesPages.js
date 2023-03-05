@@ -23,11 +23,12 @@ const makeRoutesPages = ({ app }) => {
       },
     }),
     mw(async (req, res) => {
-
       const limit = req.data.query.limit
       const offset = req.data.query.offset
 
-      res.send(await PageModel.getAllPages(req.session.isLogged, { limit, offset }))
+      res.send(
+        await PageModel.getAllPages(req.session.isLogged, { limit, offset })
+      )
     })
   )
 

@@ -1,6 +1,5 @@
 import BaseModel from "./BaseModel.js"
 import hashPassword from "../../passwordSecurity.js"
-import config from "../../config.js"
 
 class UserModel extends BaseModel {
   static tableName = "users"
@@ -24,11 +23,11 @@ class UserModel extends BaseModel {
     return result.length > 0
   }
 
-  static getAllUsers = async ({
-    limit,
-    offset
-  }) => {
-    return await UserModel.query().whereNull("deletedAt").limit(limit).offset(offset)
+  static getAllUsers = async ({ limit, offset }) => {
+    return await UserModel.query()
+      .whereNull("deletedAt")
+      .limit(limit)
+      .offset(offset)
   }
 
   static getUser = async (idUser) => {

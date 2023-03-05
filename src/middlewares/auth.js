@@ -13,7 +13,7 @@ const auth = mw(async (req, res, next) => {
 
     return
   }
-  
+
   try {
     const { payload } = jsonwebtoken.verify(
       token.slice(7),

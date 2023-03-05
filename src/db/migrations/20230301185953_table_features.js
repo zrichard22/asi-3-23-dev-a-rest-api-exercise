@@ -9,7 +9,6 @@ export const up = async (knex) => {
     { name: "Users", route: "users" }, // 1
     { name: "Pages", route: "pages" }, // 2
     { name: "NavigationMenus", route: "nav-menus" }, // 3
-
   ])
 }
 

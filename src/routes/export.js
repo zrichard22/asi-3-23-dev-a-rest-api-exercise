@@ -3,9 +3,4 @@ import makeRoutesUsers from "./makeRoutesUsers.js"
 import makeRoutesPages from "./makeRoutesPages.js"
 import makeRoutesNavMenus from "./makeRoutesNavMenus.js"
 
-export {
-    makeRoutesSign,
-    makeRoutesUsers,
-    makeRoutesPages,
-    makeRoutesNavMenus,
-}
+export { makeRoutesSign, makeRoutesUsers, makeRoutesPages, makeRoutesNavMenus }

@@ -2,7 +2,6 @@ import * as yup from "yup"
 import { nameValidator } from "./validator.js"
 
 const userValidator = {
-
   firstNameValidator: nameValidator.label("First name"),
   lastNameValidator: nameValidator.label("Last name"),
   emailValidator: yup.string().email().label("Email"),
@@ -16,4 +15,3 @@ const userValidator = {
 }
 
 export default userValidator
-

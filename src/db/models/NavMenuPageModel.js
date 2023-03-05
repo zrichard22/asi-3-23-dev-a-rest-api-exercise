@@ -5,7 +5,6 @@ import PageModel from "./PageModel.js"
 class NavMenuPageModel extends BaseModel {
   static tableName = "navMenuPages"
 
-
   static get relationMappings() {
     return {
       navMenu: {

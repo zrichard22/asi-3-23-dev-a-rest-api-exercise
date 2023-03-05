@@ -3,11 +3,7 @@ export class AppError extends Error {
   #httpCode = null
   #errorCode = "error.app"
 
-  constructor(
-    errors = ["An error has occurred"],
-    httpCode = 500,
-    errorCode
-  ) {
+  constructor(errors = ["An error has occurred"], httpCode = 500, errorCode) {
     super(errors.join(" | "))
 
     this.#errors = errors

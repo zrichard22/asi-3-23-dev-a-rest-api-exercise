@@ -15,7 +15,6 @@ const checkRights = mw(async (req, res, next) => {
     throw new InvalidAccessError()
   }
 
-
   if (!req.params.idUser && path.split("/")[1] != "users") {
     rights.ownerOnly = false
   }

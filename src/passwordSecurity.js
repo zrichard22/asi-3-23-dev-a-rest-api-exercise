@@ -6,6 +6,9 @@ const { saltlen, iterations, keylen, digest } = config.security.password
 const hashPassword = (
   password,
   salt = randomBytes(saltlen).toString("hex")
-) => [pbkdf2Sync(password, salt, iterations, keylen, digest).toString("hex"), salt]
+) => [
+  pbkdf2Sync(password, salt, iterations, keylen, digest).toString("hex"),
+  salt,
+]
 
 export default hashPassword

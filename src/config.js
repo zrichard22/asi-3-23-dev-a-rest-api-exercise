@@ -11,8 +11,8 @@ const validationConfigSchema = yup.object().shape({
     }),
   }),
   security: yup.object().shape({
-      jwt: yup.object().shape({
-        secret: yup.string().min(30).required(),
+    jwt: yup.object().shape({
+      secret: yup.string().min(30).required(),
     }),
   }),
 })
@@ -62,6 +62,5 @@ try {
   throw new Error(`Invalid config params :  ${error.errors.join("\n- ")}
 `)
 }
-
 
 export default config
